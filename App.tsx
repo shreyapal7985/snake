@@ -1,20 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+/*
+`./src/componets/Game` =Stay in current folder, then go to src    
+`../src/componets/Game` = Go up one folder first, then look for src 
+ `../../`    =   Go up two folders                         */
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+import Game from "./src/componets/game";
+
+
+
+const App= () =><Game/>;
+ export default App;
