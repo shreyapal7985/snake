@@ -11,6 +11,7 @@ import { checkGameOver } from '../utils/CheckGameOver';
 import Food from './Food';
 import {CheckEatsFood} from '../utils/checkEatsFood';
 import { randomFoodPosition } from '../utils/randomFoodPosition';
+import Header from './Header';
 
 const SNAKE_INITAL_POSITION = [{ x: 5, y: 5 }];
 const FOOD_INITIAL_POSITION = { x: 5, y: 20 };
@@ -106,9 +107,28 @@ React.useEffect(() => {
         .onEnd(() => {
             console.log("finger leaves the screen")
         });
+
+        const reloadGame = () => {
+            setSnake(SNAKE_INITAL_POSITION);
+            setFood(FOOD_INITIAL_POSITION);
+            setIsGameOver(false);
+            setScore(0);
+            setDirection(Direction.Right);
+            setIsPaused(false);
+        };
+
+        const pauseGame = () => {
+            setIsPaused(!isPaused);
+        };
+
     return (
         <GestureDetector gesture={pan}>
             <SafeAreaView style={styles.container}>
+                <Header isPaused={isPaused}
+                pauseGame={pauseGame}
+                reloadGame={reloadGame} 
+                >
+                <Text>{score}</Text></Header>
                 <View style={styles.boundaries}>
                     <Snake snakee={snaake} />
                     <Food x={food.x} y={food.y} />

@@ -4,7 +4,7 @@ import {Ionicons} from '@expo/vector-icons';
 import {FontAwesome} from '@expo/vector-icons';
 
 interface HeaderProps{
-    resetGame:()=>void;
+    reloadGame:()=>void;
     pauseGame:()=>void;
     children: React.JSX.Element;
     isPaused:boolean;
