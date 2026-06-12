@@ -9,7 +9,8 @@ import { Coordinate, Direction, GestureEventType } from '../types/Type';
 import Snake from './Snake';
 import { checkGameOver } from '../utils/CheckGameOver';
 import Food from './Food';
-import {CheckEatsFood} from '../utils/checkEatsFood'
+import {CheckEatsFood} from '../utils/checkEatsFood';
+import { randomFoodPosition } from '../utils/randomFoodPosition';
 
 const SNAKE_INITAL_POSITION = [{ x: 5, y: 5 }];
 const FOOD_INITIAL_POSITION = { x: 5, y: 20 };
@@ -65,6 +66,7 @@ React.useEffect(() => {
         if(CheckEatsFood(newHead, food, 2)){
             setSnake([newHead, ...snaake]);
             //get another position for the food
+            setFood(randomFoodPosition(GAME_BOUNDS.xMax, GAME_BOUNDS.yMax))
             setScore(score+SCORE_INCREMENT)
         }
         setSnake([newHead, ...snaake.slice(0,-1)])
