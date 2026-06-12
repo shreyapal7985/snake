@@ -8,10 +8,11 @@ import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import { Coordinate, Direction, GestureEventType } from '../types/Type';
 import Snake from './Snake';
 import { checkGameOver } from '../utils/CheckGameOver';
+import Food from './Food';
 
 const SNAKE_INITAL_POSITION = [{ x: 5, y: 5 }];
 const FOOD_INITIAL_POSITION = { x: 5, y: 20 };
-const GAME_BOUNDS = { xMin: 0, xMax: 35, yMin: 0, yMax: 63 };
+const GAME_BOUNDS = { xMin: 0, xMax: 36, yMin: 0, yMax: 80 };
 const MOVE_INTERVAL = 50;
 const SCORE_INCREMENT = 10;
 
@@ -97,6 +98,7 @@ React.useEffect(() => {
             <SafeAreaView style={styles.container}>
                 <View style={styles.boundaries}>
                     <Snake snakee={snaake} />
+                    <Food x={food.x} y={food.y} />
                 </View>
             </SafeAreaView>
         </GestureDetector>
