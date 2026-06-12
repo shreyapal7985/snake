@@ -7,6 +7,7 @@ import { Colors } from '../styles/Colors';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import { Coordinate, Direction, GestureEventType } from '../types/Type';
 import Snake from './Snake';
+import { checkGameOver } from '../utils/CheckGameOver';
 
 const SNAKE_INITAL_POSITION = [{ x: 5, y: 5 }];
 const FOOD_INITIAL_POSITION = { x: 5, y: 20 };
@@ -35,7 +36,11 @@ React.useEffect(() => {
         const snakeHead = snaake[0];
         const newHead = { ...snakeHead };//creating a copy
 
-        //game over
+        //game over 
+        if (checkGameOver(snakeHead, GAME_BOUNDS)) {
+            setIsGameOver((prev)=> !prev);
+        return;}
+
 
         switch (direction) {
             case Direction.Up:
