@@ -1,6 +1,6 @@
 import {Coordinate} from '../types/Type';
 
-export const checkEatsFood = (
+export const CheckEatsFood = (
     head:Coordinate, 
     food:Coordinate,
     area:number
