@@ -64,12 +64,16 @@ React.useEffect(() => {
 
         //if eat food grow snake
         if(CheckEatsFood(newHead, food, 2)){
-            setSnake([newHead, ...snaake]);
             //get another position for the food
             setFood(randomFoodPosition(GAME_BOUNDS.xMax, GAME_BOUNDS.yMax))
+            setSnake([newHead, ...snaake]);
+            
+        
             setScore(score+SCORE_INCREMENT)
         }
-        setSnake([newHead, ...snaake.slice(0,-1)])
+        else{
+            setSnake([newHead, ...snaake.slice(0,-1)])
+        }
     }
     const pan = Gesture.Pan()
         .onStart(() => {
