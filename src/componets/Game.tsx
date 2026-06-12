@@ -20,6 +20,16 @@ export default function Game(): React.JSX.Element {
 
     const [food, setFood] = React.useState<Coordinate>(FOOD_INITIAL_POSITION)
     const [isPaused, setIsPaused] = React.useState<boolean>(false)
+    const [isGameOver, setIsGameOver] = React.useState<boolean>(false)
+
+React.useEffect(() => {
+    if (!isGameOver) {
+        const intervalId = setInterval(() => {
+          !isPaused && moveSnake();
+        }, MOVE_INTERVAL);
+        return () => clearInterval(intervalId);
+      }
+}, [snaake, isGameOver, isPaused]);
 
     const moveSnake = () => {
         const snakeHead = snaake[0];
@@ -42,6 +52,9 @@ export default function Game(): React.JSX.Element {
                 break;
 
         }
+
+        //if eat food grow snake
+        setSnake([newHead, ...snaake.slice(0,-1)])
     }
     const pan = Gesture.Pan()
         .onStart(() => {
